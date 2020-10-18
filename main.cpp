@@ -52,7 +52,6 @@ string drawTheBeamMachineOutput(vector<int>& beamSimulation) {
       continue;
     }
   }
-  cout << maxNumber << endl;
   while (maxNumber > 0) {
     result += '|';
     for (int i = 0; i < beamSimulation.size(); ++i) {
@@ -104,13 +103,10 @@ int main() {
   vector<int> slotsList;
   slotsList = determineNumberOfSlot(pathForEachBall, slots);
 
-  int j = 0;
-  for (int i : slotsList) {
-    cout << j << " " << i << endl;
-    ++j;
-  }
+  string result = drawTheBeamMachineOutput(slotsList);
 
-  drawTheBeamMachineOutput(slotsList);
-
+  cout << "\n\n" << endl;
+  cout << "The display of the final beam machine result";
+  cout << result << endl;
   return 0;
 }
