@@ -43,6 +43,38 @@ vector<int> determineNumberOfSlot(vector<string> paths, int slots) {
   return result;
 }
 
+string drawTheBeamMachineOutput(vector<int>& beamSimulation) {
+  string result;
+  int maxNumber = 0;
+  for (int number : beamSimulation) {
+    if (number > maxNumber) {
+      maxNumber = number;
+      continue;
+    }
+  }
+  cout << maxNumber << endl;
+  while (maxNumber > 0) {
+    result += '|';
+    for (int i = 0; i < beamSimulation.size(); ++i) {
+      if (beamSimulation[i] == maxNumber) {
+        result += "0|";
+        --beamSimulation[i];
+      }
+      else {
+        result += " |";
+      }
+    }
+    --maxNumber;
+    result += '\n';
+  }
+  result += "|";
+  for (int i = 0; i < beamSimulation.size(); ++i) {
+    result += to_string(i);
+    result += "|";
+  }
+  cout << result << endl;
+}
+
 int main() {
   // get the user input in the demanded format
   string numberOfBalls;
@@ -77,6 +109,8 @@ int main() {
     cout << j << " " << i << endl;
     ++j;
   }
+
+  drawTheBeamMachineOutput(slotsList);
 
   return 0;
 }
